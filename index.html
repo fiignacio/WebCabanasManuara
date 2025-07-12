@@ -54,7 +54,7 @@
     <!-- Header -->
     <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-gray-800">Cabañas Manuara</a>
+            <a href="#" class="text-2xl font-bold text-gray-800">Cabañas Vai Moana</a>
             <div class="hidden md:flex space-x-6">
                 <a href="#cabanas" class="text-gray-600 hover:text-gray-800">Cabañas</a>
                 <a href="#servicios" class="text-gray-600 hover:text-gray-800">Servicios</a>
@@ -260,26 +260,23 @@
         import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp, query } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         // =================================================================================
-        // PASO IMPORTANTE: Pega tu configuración de Firebase aquí
+        //
+        //  PASO 1: PEGA TU CONFIGURACIÓN DE FIREBASE AQUÍ
+        //  Obtenla desde la configuración de tu proyecto en la consola de Firebase.
+        //
         // =================================================================================
         const firebaseConfig = {
-
-  apiKey: "AIzaSyCulAcD35Z4NdF_g0NyjbuAQ3KjUhS_Amk",
-
-  authDomain: "cabanas-manuara.firebaseapp.com",
-
-  projectId: "cabanas-manuara",
-
-  storageBucket: "cabanas-manuara.firebasestorage.app",
-
-  messagingSenderId: "864729742711",
-
-  appId: "1:864729742711:web:f6b46b74d71659fc0bf572"
-
+  apiKey: "AIzaSyCulAcD35Z4NdF_g0NyjbuAQ3KjUhS_Amk",
+  authDomain: "cabanas-manuara.firebaseapp.com",
+  projectId: "cabanas-manuara",
+  storageBucket: "cabanas-manuara.firebasestorage.app",
+  messagingSenderId: "864729742711",
+  appId: "1:864729742711:web:2f4041a703ae21e70bf572"
 };
+
         // =================================================================================
         
-        // Define un identificador único para tu aplicación. Puede ser el nombre de tu sitio.
+        // Define un identificador único para tu aplicación.
         const appId = 'cabanas-manuara';
 
         let db, auth;
@@ -319,6 +316,7 @@
             if (!firebaseConfig.apiKey) {
                 console.error("Firebase config is missing!");
                 showNotification("Error de configuración. El sitio no puede conectar a la base de datos.", false);
+                document.getElementById('loading-testimonios').textContent = 'Error de configuración del sitio.';
                 return;
             }
 
@@ -336,6 +334,7 @@
             } catch (error) {
                 console.error("Firebase initialization failed:", error);
                 showNotification("No se pudo conectar a la base de datos.", false);
+                document.getElementById('loading-testimonios').textContent = 'Error al conectar con la base de datos.';
             }
         });
 
@@ -346,11 +345,11 @@
             onSnapshot(q, (snapshot) => {
                 const testimoniosLista = document.getElementById('testimonios-lista');
                 const loadingMessage = document.getElementById('loading-testimonios');
-                testimoniosLista.innerHTML = ''; 
+                
+                if (loadingMessage) testimoniosLista.innerHTML = ''; 
 
                 if (snapshot.empty) {
-                    loadingMessage.textContent = 'Aún no hay testimonios. ¡Sé el primero!';
-                    testimoniosLista.appendChild(loadingMessage);
+                    testimoniosLista.innerHTML = '<p class="col-span-full text-center text-gray-500">Aún no hay testimonios. ¡Sé el primero!</p>';
                 } else {
                      const docs = snapshot.docs.sort((a, b) => {
                         const timeA = a.data().timestamp?.toDate() || 0;
@@ -374,6 +373,7 @@
             }, (error) => {
                 console.error("Error loading testimonials: ", error);
                 showNotification("Error al cargar los testimonios.", false);
+                document.getElementById('testimonios-lista').innerHTML = '<p class="col-span-full text-center text-red-500">No se pudieron cargar los testimonios.</p>';
             });
         }
 
@@ -460,7 +460,4 @@
     </script>
 </body>
 </html>
-
-
-
 
