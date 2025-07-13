@@ -8,47 +8,28 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <!-- Librería para generar PDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #FDFBF8;
-            color: #3D405B;
-        }
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-        }
-        .card-shadow {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-        }
-        .btn {
-            transition: all 0.3s ease;
-        }
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        #notification {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 1rem 2rem;
-            border-radius: 0.5rem;
-            color: white;
-            z-index: 100;
-            transition: opacity 0.5s, visibility 0.5s;
-            opacity: 0;
-            visibility: hidden;
-        }
-        #notification.show {
-            opacity: 1;
-            visibility: visible;
-        }
+        body { font-family: 'Inter', sans-serif; background-color: #FDFBF8; color: #3D405B; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .card-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); }
+        .btn { transition: all 0.3s ease; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+        html { scroll-behavior: smooth; }
+        #notification { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); padding: 1rem 2rem; border-radius: 0.5rem; color: white; z-index: 100; transition: opacity 0.5s, visibility 0.5s; opacity: 0; visibility: hidden; }
+        #notification.show { opacity: 1; visibility: visible; }
+        
+        /* Carousel Styles */
+        .carousel-container { position: relative; overflow: hidden; }
+        .carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
+        .carousel-slide { min-width: 100%; box-sizing: border-box; }
+        .carousel-button { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 0.5rem; cursor: pointer; z-index: 10; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
+        .carousel-button:hover { background-color: rgba(0, 0, 0, 0.8); }
+        .carousel-button.prev { left: 10px; }
+        .carousel-button.next { right: 10px; }
+        .carousel-dots { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; }
+        .carousel-dot { width: 10px; height: 10px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.5); cursor: pointer; transition: background-color 0.3s; }
+        .carousel-dot.active { background-color: white; }
     </style>
 </head>
 <body class="antialiased">
@@ -68,7 +49,8 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative h-[60vh] min-h-[400px] bg-cover bg-center text-white" style="background-image: url('https://images.unsplash.com/photo-1590202868492-0233346f8a87?q=80&w=2070&auto=format&fit=crop');">
+    <section class="relative h-[60vh] min-h-[400px] bg-cover bg-center text-white" style="background-image: url('https://raw.githubusercontent.com/f4b14n123s/web-cabanas-manuara/main/imagenes/hero-image.jpg');">
+        <!-- Reemplaza la URL de arriba con la URL convertida de tu imagen principal -->
         <div class="absolute inset-0 bg-black/50"></div>
         <div class="relative container mx-auto px-6 h-full flex flex-col justify-center items-center text-center">
             <h1 class="text-4xl md:text-6xl font-bold mb-4">Tu hogar en el ombligo del mundo</h1>
@@ -81,24 +63,49 @@
         <section id="cabanas" class="mb-20 scroll-mt-20">
             <h2 class="text-4xl font-bold text-center mb-12">Nuestras Cabañas</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                <!-- Cabaña Pequeña con Carrusel -->
                 <div class="bg-white rounded-lg overflow-hidden card-shadow">
-                    <img src="https://placehold.co/600x400/A9B4C2/FFFFFF?text=Cabaña+Pequeña" alt="Imagen de una cabaña pequeña y acogedora" class="w-full h-56 object-cover">
+                    <div class="carousel-container h-56" data-carousel-id="cabana-pequena">
+                        <!-- Agrega tus URLs de imágenes aquí -->
+                        <div class="carousel-track">
+                            <img src="https://raw.githubusercontent.com/f4b14n123s/web-cabanas-manuara/main/imagenes/pequena-1.jpg" alt="Foto 1 de la cabaña pequeña" class="carousel-slide w-full h-full object-cover">
+                            <img src="https://raw.githubusercontent.com/f4b14n123s/web-cabanas-manuara/main/imagenes/pequena-2.jpg" alt="Foto 2 de la cabaña pequeña" class="carousel-slide w-full h-full object-cover">
+                        </div>
+                    </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-bold mb-2">Cabaña Turi</h3>
                         <p class="text-gray-600 mb-4">Capacidad máxima: 3 personas</p>
                         <p class="text-gray-700">Ideal para parejas o viajeros solitarios que buscan un refugio acogedor y funcional.</p>
                     </div>
                 </div>
+
+                <!-- Cabaña Mediana con Carrusel -->
                 <div class="bg-white rounded-lg overflow-hidden card-shadow">
-                    <img src="https://placehold.co/600x400/8E9B90/FFFFFF?text=Cabaña+Mediana" alt="Imagen de una cabaña mediana con espacio para una familia" class="w-full h-56 object-cover">
+                    <div class="carousel-container h-56" data-carousel-id="cabana-mediana">
+                        <!-- Agrega tus URLs de imágenes aquí -->
+                        <div class="carousel-track">
+                           <img src="https://raw.githubusercontent.com/f4b14n123s/web-cabanas-manuara/main/imagenes/mediana-1.jpg" alt="Foto 1 de la cabaña mediana" class="carousel-slide w-full h-full object-cover">
+                           <img src="https://raw.githubusercontent.com/f4b14n123s/web-cabanas-manuara/main/imagenes/mediana-2.jpg" alt="Foto 2 de la cabaña mediana" class="carousel-slide w-full h-full object-cover">
+                           <img src="https://raw.githubusercontent.com/f4b14n123s/web-cabanas-manuara/main/imagenes/mediana-3.jpg" alt="Foto 3 de la cabaña mediana" class="carousel-slide w-full h-full object-cover">
+                        </div>
+                    </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-bold mb-2">Cabaña Kava</h3>
                         <p class="text-gray-600 mb-4">Capacidad máxima: 4 personas</p>
                         <p class="text-gray-700">Perfecta para familias pequeñas o grupos de amigos. Contamos con dos unidades de este tipo.</p>
                     </div>
                 </div>
+
+                <!-- Cabaña Grande con Carrusel -->
                 <div class="bg-white rounded-lg overflow-hidden card-shadow md:col-span-2 lg:col-span-1">
-                    <img src="https://placehold.co/600x400/7D8A9B/FFFFFF?text=Cabaña+Grande" alt="Imagen de una cabaña grande y espaciosa" class="w-full h-56 object-cover">
+                     <div class="carousel-container h-56" data-carousel-id="cabana-grande">
+                        <!-- Agrega tus URLs de imágenes aquí -->
+                        <div class="carousel-track">
+                           <img src="https://raw.githubusercontent.com/f4b14n123s/web-cabanas-manuara/main/imagenes/grande-1.jpg" alt="Foto 1 de la cabaña grande" class="carousel-slide w-full h-full object-cover">
+                           <img src="https://raw.githubusercontent.com/f4b14n123s/web-cabanas-manuara/main/imagenes/grande-2.jpg" alt="Foto 2 de la cabaña grande" class="carousel-slide w-full h-full object-cover">
+                        </div>
+                    </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-bold mb-2">Cabaña Ariki</h3>
                         <p class="text-gray-600 mb-4">Capacidad máxima: 6 personas</p>
@@ -276,6 +283,67 @@
 
         // Destructure jsPDF from the window object
         const { jsPDF } = window.jspdf;
+        // --- Carousel Logic ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousels = document.querySelectorAll('.carousel-container');
+            
+            carousels.forEach(carousel => {
+                const track = carousel.querySelector('.carousel-track');
+                const slides = Array.from(track.children);
+                const slideWidth = slides[0].getBoundingClientRect().width;
+                let currentIndex = 0;
+
+                // Create buttons and dots
+                const prevButton = document.createElement('button');
+                prevButton.innerHTML = '&#10094;';
+                prevButton.classList.add('carousel-button', 'prev');
+                carousel.appendChild(prevButton);
+
+                const nextButton = document.createElement('button');
+                nextButton.innerHTML = '&#10095;';
+                nextButton.classList.add('carousel-button', 'next');
+                carousel.appendChild(nextButton);
+                
+                const dotsNav = document.createElement('div');
+                dotsNav.classList.add('carousel-dots');
+                carousel.appendChild(dotsNav);
+
+                slides.forEach((slide, index) => {
+                    const dot = document.createElement('button');
+                    dot.classList.add('carousel-dot');
+                    if(index === 0) dot.classList.add('active');
+                    dotsNav.appendChild(dot);
+                    
+                    dot.addEventListener('click', () => {
+                        currentIndex = index;
+                        updateCarousel();
+                    });
+                });
+                
+                const dots = Array.from(dotsNav.children);
+
+                const updateCarousel = () => {
+                    track.style.transform = 'translateX(-' + slideWidth * currentIndex + 'px)';
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    dots[currentIndex].classList.add('active');
+                };
+
+                nextButton.addEventListener('click', () => {
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    updateCarousel();
+                });
+
+                prevButton.addEventListener('click', () => {
+                    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                    updateCarousel();
+                });
+                
+                // Adjust on resize
+                window.addEventListener('resize', () => {
+                    const newSlideWidth = slides[0].getBoundingClientRect().width;
+                    track.style.transform = 'translateX(-' + newSlideWidth * currentIndex + 'px)';
+                });
+            });
 
         // =================================================================================
         //
