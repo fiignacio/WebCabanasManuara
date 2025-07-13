@@ -20,15 +20,15 @@
         #notification.show { opacity: 1; visibility: visible; }
         
         /* Carousel Styles */
-        .carousel-container { position: relative; overflow: hidden; }
-        .carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
-        .carousel-slide { min-width: 100%; box-sizing: border-box; }
-        .carousel-button { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 0.5rem; cursor: pointer; z-index: 10; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
-        .carousel-button:hover { background-color: rgba(0, 0, 0, 0.8); }
+        .carousel-container { position: relative; overflow: hidden; border-radius: 0.5rem; }
+        .carousel-track { display: flex; transition: transform 0.5s ease-in-out; height: 100%;}
+        .carousel-slide { min-width: 100%; box-sizing: border-box; cursor: pointer; }
+        .carousel-button { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(0, 0, 0, 0.4); color: white; border: none; padding: 0.5rem; cursor: pointer; z-index: 10; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; transition: background-color 0.3s; }
+        .carousel-button:hover { background-color: rgba(0, 0, 0, 0.7); }
         .carousel-button.prev { left: 10px; }
         .carousel-button.next { right: 10px; }
         .carousel-dots { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; }
-        .carousel-dot { width: 10px; height: 10px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.5); cursor: pointer; transition: background-color 0.3s; }
+        .carousel-dot { width: 10px; height: 10px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.6); cursor: pointer; transition: background-color 0.3s; border: 1px solid rgba(0,0,0,0.2); }
         .carousel-dot.active { background-color: white; }
     </style>
 </head>
@@ -49,9 +49,8 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative h-[60vh] min-h-[400px] bg-cover bg-center text-white" style="background-image: url('https://raw.githubusercontent.com/f4b14n123s/web-cabanas-manuara/main/imagenes/hero-image.jpg');">
-        <!-- Reemplaza la URL de arriba con la URL convertida de tu imagen principal -->
-        <div class="absolute inset-0 bg-black/50"></div>
+    <section class="relative h-[60vh] min-h-[400px] bg-cover bg-center text-white" style="background-image: url('https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/refs/heads/main/IMG-20230803-WA0002.jpg');">
+        <div class="absolute inset-0 bg-black/30"></div>
         <div class="relative container mx-auto px-6 h-full flex flex-col justify-center items-center text-center">
             <h1 class="text-4xl md:text-6xl font-bold mb-4">Tu hogar en el ombligo del mundo</h1>
             <p class="text-lg md:text-xl max-w-3xl">Descubre la magia de Rapa Nui desde la comodidad de nuestras cabañas privadas.</p>
@@ -67,13 +66,12 @@
                 <!-- Cabaña Pequeña con Carrusel -->
                 <div class="bg-white rounded-lg overflow-hidden card-shadow">
                     <div class="carousel-container h-56" data-carousel-id="cabana-pequena">
-                        <!-- Agrega tus URLs de imágenes aquí -->
                         <div class="carousel-track">
-                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/refs/heads/main/caba%C3%B1a%20chica/20240922_145048.jpg"alt="Foto 1 de la cabaña pequeña" class="carousel-slide w-med h-med object-cover">
-                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/refs/heads/main/caba%C3%B1a%20chica/20240922_145117.jpg"alt="Foto 1 de la cabaña pequeña" class="carousel-slide w-full h-full object-cover">
-                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/refs/heads/main/caba%C3%B1a%20chica/20240922_145205.jpg"alt="Foto 1 de la cabaña pequeña" class="carousel-slide w-full h-full object-cover">
-                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/refs/heads/main/caba%C3%B1a%20chica/35af3ed6-f763-4e35-9f2f-2410c67d5766.jpg"alt="Foto 1 de la cabaña pequeña" class="carousel-slide w-full h-full object-cover">
-                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/refs/heads/main/caba%C3%B1a%20chica/9629d318-58c2-48dd-bec2-db904ac0c353.jpg"alt="Foto 1 de la cabaña pequeña" class="carousel-slide w-full h-full object-cover">
+                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/main/caba%C3%B1a%20chica/20240922_145048.jpg" alt="Foto 1 de la cabaña pequeña" class="carousel-slide w-full h-full object-cover">
+                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/main/caba%C3%B1a%20chica/20240922_145117.jpg" alt="Foto 2 de la cabaña pequeña" class="carousel-slide w-full h-full object-cover">
+                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/main/caba%C3%B1a%20chica/20240922_145205.jpg" alt="Foto 3 de la cabaña pequeña" class="carousel-slide w-full h-full object-cover">
+                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/main/caba%C3%B1a%20chica/35af3ed6-f763-4e35-9f2f-2410c67d5766.jpg" alt="Foto 4 de la cabaña pequeña" class="carousel-slide w-full h-full object-cover">
+                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/main/caba%C3%B1a%20chica/9629d318-58c2-48dd-bec2-db904ac0c353.jpg" alt="Foto 5 de la cabaña pequeña" class="carousel-slide w-full h-full object-cover">
                         </div>
                     </div>
                     <div class="p-6">
@@ -86,16 +84,15 @@
                 <!-- Cabaña Mediana con Carrusel -->
                 <div class="bg-white rounded-lg overflow-hidden card-shadow">
                     <div class="carousel-container h-56" data-carousel-id="cabana-mediana">
-                        <!-- Agrega tus URLs de imágenes aquí -->
                         <div class="carousel-track">
-                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/refs/heads/main/caba%C3%B1a%20ana/20240922_145557.jpg" alt="Foto 1 de la cabaña mediana" class="carousel-slide w-full h-full object-cover">
-                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/refs/heads/main/caba%C3%B1a%20ana/20240922_145533.jpg" alt="Foto 2 de la cabaña mediana" class="carousel-slide w-full h-full object-cover">
-                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/refs/heads/main/caba%C3%B1a%20ana/20240922_145603.jpg" alt="Foto 3 de la cabaña mediana" class="carousel-slide w-full h-full object-cover">
-                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/refs/heads/main/caba%C3%B1a%20ana/20240922_145608.jpg" alt="Foto 4 de la cabaña mediana" class="carousel-slide w-full h-full object-cover">
-                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/refs/heads/main/caba%C3%B1a%20ana/48cadbf6-8473-4206-b88c-a11ede465b53.jpg"alt="Foto 5 de la cabaña mediana" class="carousel-slide w-full h-full object-cover">
-                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/refs/heads/main/caba%C3%B1a%20ana/db23f19d-fde0-4e8f-8c2f-a85b2afc26ca.jpg"alt="Foto 6 de la cabaña mediana" class="carousel-slide w-full h-full object-cover">
-                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/refs/heads/main/caba%C3%B1a%20ana/eaa0b6e8-c460-4112-926a-9c98df73c199.jpg"alt="Foto 7 de la cabaña mediana" class="carousel-slide w-full h-full object-cover">
-                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/refs/heads/main/caba%C3%B1a%20ana/f936cb38-3305-4ae4-a5b8-8cc6458c93ef.jpg"alt="Foto 8 de la cabaña mediana" class="carousel-slide w-full h-full object-cover">
+                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/main/caba%C3%B1a%20ana/20240922_145557.jpg" alt="Foto 1 de la cabaña mediana" class="carousel-slide w-full h-full object-cover">
+                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/main/caba%C3%B1a%20ana/20240922_145533.jpg" alt="Foto 2 de la cabaña mediana" class="carousel-slide w-full h-full object-cover">
+                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/main/caba%C3%B1a%20ana/20240922_145603.jpg" alt="Foto 3 de la cabaña mediana" class="carousel-slide w-full h-full object-cover">
+                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/main/caba%C3%B1a%20ana/20240922_145608.jpg" alt="Foto 4 de la cabaña mediana" class="carousel-slide w-full h-full object-cover">
+                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/main/caba%C3%B1a%20ana/48cadbf6-8473-4206-b88c-a11ede465b53.jpg" alt="Foto 5 de la cabaña mediana" class="carousel-slide w-full h-full object-cover">
+                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/main/caba%C3%B1a%20ana/db23f19d-fde0-4e8f-8c2f-a85b2afc26ca.jpg" alt="Foto 6 de la cabaña mediana" class="carousel-slide w-full h-full object-cover">
+                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/main/caba%C3%B1a%20ana/eaa0b6e8-c460-4112-926a-9c98df73c199.jpg" alt="Foto 7 de la cabaña mediana" class="carousel-slide w-full h-full object-cover">
+                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/main/caba%C3%B1a%20ana/f936cb38-3305-4ae4-a5b8-8cc6458c93ef.jpg" alt="Foto 8 de la cabaña mediana" class="carousel-slide w-full h-full object-cover">
                         </div>
                     </div>
                     <div class="p-6">
@@ -108,13 +105,12 @@
                 <!-- Cabaña Grande con Carrusel -->
                 <div class="bg-white rounded-lg overflow-hidden card-shadow md:col-span-2 lg:col-span-1">
                      <div class="carousel-container h-56" data-carousel-id="cabana-grande">
-                        <!-- Agrega tus URLs de imágenes aquí -->
                         <div class="carousel-track">
-                           <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/refs/heads/main/caba%C3%B1a%20grande/51dcf6f5-23ca-4146-a043-596e64838429.jpg"alt="Foto 1 de la cabaña grande" class="carousel-slide w-full h-full object-cover">
-                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/refs/heads/main/caba%C3%B1a%20grande/6462f2b7-df65-4a5d-857c-50897cd2b3f6.jpg"alt="Foto 1 de la cabaña grande" class="carousel-slide w-full h-full object-cover">
-                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/refs/heads/main/caba%C3%B1a%20grande/67a036ac-8142-4d0b-8404-3f77738c3d8c.jpg"alt="Foto 1 de la cabaña grande" class="carousel-slide w-full h-full object-cover">
-                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/refs/heads/main/caba%C3%B1a%20grande/768df86d-08b0-4723-b1e0-6a89f4a9a54e.jpg"alt="Foto 1 de la cabaña grande" class="carousel-slide w-full h-full object-cover">
-                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/refs/heads/main/caba%C3%B1a%20grande/da90541c-af4f-435d-9245-239cc5a0cb9a.jpg"alt="Foto 1 de la cabaña grande" class="carousel-slide w-full h-full object-cover">
+                           <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/main/caba%C3%B1a%20grande/51dcf6f5-23ca-4146-a043-596e64838429.jpg" alt="Foto 1 de la cabaña grande" class="carousel-slide w-full h-full object-cover">
+                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/main/caba%C3%B1a%20grande/6462f2b7-df65-4a5d-857c-50897cd2b3f6.jpg" alt="Foto 2 de la cabaña grande" class="carousel-slide w-full h-full object-cover">
+                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/main/caba%C3%B1a%20grande/67a036ac-8142-4d0b-8404-3f77738c3d8c.jpg" alt="Foto 3 de la cabaña grande" class="carousel-slide w-full h-full object-cover">
+                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/main/caba%C3%B1a%20grande/768df86d-08b0-4723-b1e0-6a89f4a9a54e.jpg" alt="Foto 4 de la cabaña grande" class="carousel-slide w-full h-full object-cover">
+                            <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/main/caba%C3%B1a%20grande/da90541c-af4f-435d-9245-239cc5a0cb9a.jpg" alt="Foto 5 de la cabaña grande" class="carousel-slide w-full h-full object-cover">
                         </div>
                     </div>
                     <div class="p-6">
@@ -163,7 +159,6 @@
             </div>
         </section>
 
-        <!-- Ubicacion Section -->
         <section id="ubicacion" class="mb-20 scroll-mt-20 text-center">
             <h2 class="text-4xl font-bold text-center mb-12">Nuestra Ubicación</h2>
             <div class="w-full h-96 rounded-lg overflow-hidden card-shadow">
@@ -178,7 +173,6 @@
             </a>
         </section>
 
-        <!-- Testimonios Section -->
         <section id="testimonios" class="mb-20 scroll-mt-20">
             <h2 class="text-4xl font-bold text-center mb-12">Lo que dicen nuestros huéspedes</h2>
             
@@ -217,7 +211,6 @@
             </div>
         </section>
 
-        <!-- Cotizar Section -->
         <section id="cotizar" class="bg-white p-8 md:p-12 rounded-lg card-shadow max-w-4xl mx-auto scroll-mt-20">
             <h2 class="text-4xl font-bold text-center mb-8">Solicita tu Cotización</h2>
             <form id="cotizacion-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -263,7 +256,7 @@
             </form>
         </section>
     </main>
-
+    
     <!-- Footer -->
     <footer class="bg-gray-800 text-white">
         <div class="container mx-auto px-6 py-8 text-center">
@@ -284,27 +277,34 @@
         </div>
     </footer>
 
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-80 z-50 hidden items-center justify-center p-4">
+        <span id="lightbox-close" class="absolute top-4 right-6 text-white text-5xl font-bold cursor-pointer hover:text-gray-300 transition-colors">&times;</span>
+        <img id="lightbox-image" src="" alt="Imagen ampliada" class="max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl">
+    </div>
+
     <div id="notification"></div>
 
     <script type="module">
-        // Firebase and other imports
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp, query } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Destructure jsPDF from the window object
         const { jsPDF } = window.jspdf;
+
         // --- Carousel Logic ---
-        document.addEventListener('DOMContentLoaded', () => {
+        function setupCarousels() {
             const carousels = document.querySelectorAll('.carousel-container');
             
             carousels.forEach(carousel => {
                 const track = carousel.querySelector('.carousel-track');
-                const slides = Array.from(track.children);
-                const slideWidth = slides[0].getBoundingClientRect().width;
-                let currentIndex = 0;
+                if (!track || !track.children.length) return;
 
-                // Create buttons and dots
+                const slides = Array.from(track.children);
+                let currentIndex = 0;
+                let autoPlayInterval;
+
+                // Create controls
                 const prevButton = document.createElement('button');
                 prevButton.innerHTML = '&#10094;';
                 prevButton.classList.add('carousel-button', 'prev');
@@ -319,64 +319,110 @@
                 dotsNav.classList.add('carousel-dots');
                 carousel.appendChild(dotsNav);
 
-                slides.forEach((slide, index) => {
+                slides.forEach((_, index) => {
                     const dot = document.createElement('button');
                     dot.classList.add('carousel-dot');
                     if(index === 0) dot.classList.add('active');
                     dotsNav.appendChild(dot);
                     
                     dot.addEventListener('click', () => {
-                        currentIndex = index;
-                        updateCarousel();
+                        moveToSlide(index);
+                        resetAutoPlay();
                     });
                 });
                 
                 const dots = Array.from(dotsNav.children);
 
-                const updateCarousel = () => {
-                    track.style.transform = 'translateX(-' + slideWidth * currentIndex + 'px)';
+                const moveToSlide = (index) => {
+                    const containerWidth = carousel.getBoundingClientRect().width;
+                    track.style.transform = `translateX(-${containerWidth * index}px)`;
+                    currentIndex = index;
                     dots.forEach(dot => dot.classList.remove('active'));
                     dots[currentIndex].classList.add('active');
                 };
+                
+                const moveNext = () => {
+                    const newIndex = (currentIndex + 1) % slides.length;
+                    moveToSlide(newIndex);
+                };
+
+                const startAutoPlay = () => {
+                    autoPlayInterval = setInterval(moveNext, 5000);
+                };
+
+                const stopAutoPlay = () => {
+                    clearInterval(autoPlayInterval);
+                };
+                
+                const resetAutoPlay = () => {
+                    stopAutoPlay();
+                    startAutoPlay();
+                };
 
                 nextButton.addEventListener('click', () => {
-                    currentIndex = (currentIndex + 1) % slides.length;
-                    updateCarousel();
+                    moveNext();
+                    resetAutoPlay();
                 });
 
                 prevButton.addEventListener('click', () => {
-                    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-                    updateCarousel();
+                    const newIndex = (currentIndex - 1 + slides.length) % slides.length;
+                    moveToSlide(newIndex);
+                    resetAutoPlay();
                 });
                 
-                // Adjust on resize
-                window.addEventListener('resize', () => {
-                    const newSlideWidth = slides[0].getBoundingClientRect().width;
-                    track.style.transform = 'translateX(-' + newSlideWidth * currentIndex + 'px)';
+                carousel.addEventListener('mouseenter', stopAutoPlay);
+                carousel.addEventListener('mouseleave', startAutoPlay);
+
+                window.addEventListener('resize', () => moveToSlide(currentIndex));
+                
+                startAutoPlay();
+            });
+        }
+
+        // --- Lightbox Logic ---
+        function setupLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const closeButton = document.getElementById('lightbox-close');
+            const images = document.querySelectorAll('.carousel-slide');
+
+            images.forEach(image => {
+                image.addEventListener('click', () => {
+                    lightboxImage.src = image.src;
+                    lightbox.classList.remove('hidden');
+                    lightbox.classList.add('flex');
                 });
             });
 
+            const closeLightbox = () => {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+                lightboxImage.src = '';
+            };
+
+            closeButton.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+        }
+        
         // =================================================================================
-        //
-        //  Pega tu configuración de Firebase aquí.
-        //
+        // Firebase Configuration
         // =================================================================================
         const firebaseConfig = {
-            const firebaseConfig = {
              apiKey: "AIzaSyCulAcD35Z4NdF_g0NyjbuAQ3KjUhS_Amk",
              authDomain: "cabanas-manuara.firebaseapp.com",
              projectId: "cabanas-manuara",
-             storageBucket: "cabanas-manuara.firebasestorage.app",
+             storageBucket: "cabanas-manuara.appspot.com",
              messagingSenderId: "864729742711",
              appId: "1:864729742711:web:2f4041a703ae21e70bf572"
-};
         };
-        // =================================================================================
         
         const appId = 'cabañas-manuara';
         let db, auth;
 
-        // --- Helper Functions ---
         function showNotification(message, isSuccess = true) {
             const notification = document.getElementById('notification');
             notification.textContent = message;
@@ -388,14 +434,114 @@
         }
 
         function renderStars(rating, isInput = false, containerId = null) {
-            // ... (No changes in this function's logic)
+            let starsHtml = '';
+            for (let i = 1; i <= 5; i++) {
+                if (isInput) {
+                    starsHtml += `
+                        <label class="cursor-pointer text-gray-300 hover:text-yellow-400 transition-colors">
+                            <input type="radio" name="rating" value="${i}" class="hidden" />
+                            <svg class="w-8 h-8 star-icon" data-value="${i}" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        </label>
+                    `;
+                } else {
+                    const color = i <= rating ? 'text-yellow-400' : 'text-gray-300';
+                    starsHtml += `<svg class="w-5 h-5 ${color}" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>`;
+                }
+            }
+            if (isInput && containerId) {
+                document.getElementById(containerId).innerHTML = starsHtml;
+            }
+            return starsHtml;
         }
 
+        function setupTestimonialForm() {
+            const form = document.getElementById('testimonio-form');
+            if (!form) return;
+            const starsContainer = document.getElementById('testimonio-estrellas');
+            
+            renderStars(0, true, 'testimonio-estrellas');
+
+            starsContainer.addEventListener('click', e => {
+                const starInput = e.target.closest('label').querySelector('input[name="rating"]');
+                if (starInput) {
+                    const rating = starInput.value;
+                    const allStars = starsContainer.querySelectorAll('.star-icon');
+                    allStars.forEach(star => {
+                        star.classList.toggle('text-yellow-400', star.dataset.value <= rating);
+                        star.classList.toggle('text-gray-300', star.dataset.value > rating);
+                    });
+                }
+            });
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const ratingInput = form.querySelector('input[name="rating"]:checked');
+                if (!ratingInput) {
+                    showNotification("Por favor, selecciona una valoración en estrellas.", false);
+                    return;
+                }
+
+                const data = {
+                    nombre: document.getElementById('testimonio-nombre').value,
+                    origen: document.getElementById('testimonio-origen').value,
+                    comentario: document.getElementById('testimonio-mensaje').value,
+                    estrellas: Number(ratingInput.value),
+                    timestamp: serverTimestamp()
+                };
+
+                try {
+                    const testimoniosCollection = collection(db, `artifacts/${appId}/public/data/testimonios`);
+                    await addDoc(testimoniosCollection, data);
+                    showNotification("¡Gracias por tu comentario!", true);
+                    form.reset();
+                    renderStars(0, true, 'testimonio-estrellas');
+                } catch (error) {
+                    console.error("Error submitting testimonial: ", error);
+                    showNotification("Hubo un error al enviar tu comentario.", false);
+                }
+            });
+        }
+
+        function loadTestimonials() {
+            const testimoniosCollection = collection(db, `artifacts/${appId}/public/data/testimonios`);
+            const q = query(testimoniosCollection);
+
+            onSnapshot(q, (snapshot) => {
+                const testimoniosLista = document.getElementById('testimonios-lista');
+                if (!testimoniosLista) return;
+                testimoniosLista.innerHTML = ''; 
+
+                if (snapshot.empty) {
+                    testimoniosLista.innerHTML = '<p class="col-span-full text-center text-gray-500">Aún no hay testimonios. ¡Sé el primero!</p>';
+                } else {
+                     const docs = snapshot.docs.sort((a, b) => (b.data().timestamp?.toDate() || 0) - (a.data().timestamp?.toDate() || 0));
+                     docs.forEach(doc => {
+                        const testimonio = doc.data();
+                        const card = document.createElement('div');
+                        card.className = "bg-white p-6 rounded-lg card-shadow flex flex-col";
+                        card.innerHTML = `
+                            <div class="flex items-center mb-4">${renderStars(testimonio.estrellas)}</div>
+                            <p class="text-gray-600 italic mb-4 flex-grow">"${testimonio.comentario}"</p>
+                            <p class="font-bold text-gray-800">- ${testimonio.nombre}</p>
+                            <p class="text-sm text-gray-500">${testimonio.origen}</p>
+                        `;
+                        testimoniosLista.appendChild(card);
+                    });
+                }
+            }, (error) => {
+                console.error("Error loading testimonials: ", error);
+            });
+        }
+        
         // --- Main Application Logic ---
         document.addEventListener('DOMContentLoaded', async () => {
+            setupCarousels();
+            setupLightbox();
+
             if (!firebaseConfig.apiKey) {
                 console.warn("Firebase config is missing. Testimonial feature will be disabled.");
-                document.getElementById('testimonios').style.display = 'none';
+                const testimoniosSection = document.getElementById('testimonios');
+                if(testimoniosSection) testimoniosSection.style.display = 'none';
             } else {
                  try {
                     const app = initializeApp(firebaseConfig);
@@ -412,16 +558,7 @@
             }
             setupQuoteForm();
         });
-
-        // --- Testimonials Logic ---
-        function loadTestimonials() {
-            // ... (No changes in this function's logic)
-        }
-
-        function setupTestimonialForm() {
-            // ... (No changes in this function's logic)
-        }
-
+        
         // --- Quote Form Logic ---
         function setupQuoteForm() {
             const form = document.getElementById('cotizacion-form');
@@ -439,17 +576,7 @@
                     mensaje: formData.get('mensaje') || 'Ninguno'
                 };
 
-                const cotizacionText = `
-                    *¡Nueva Solicitud de Cotización!*
-
-                    *Nombre:* ${data.nombre}
-                    *Email:* ${data.email}
-                    *Fecha de Llegada:* ${data.llegada}
-                    *Fecha de Salida:* ${data.salida}
-                    *Número de Personas:* ${data.personas}
-                    *Tipo de Cabaña:* ${data.tipoCabana}
-                    *Mensaje Adicional:* ${data.mensaje}
-                `.trim();
+                const cotizacionText = `*¡Nueva Solicitud de Cotización!*\n\n*Nombre:* ${data.nombre}\n*Email:* ${data.email}\n*Fecha de Llegada:* ${data.llegada}\n*Fecha de Salida:* ${data.salida}\n*Número de Personas:* ${data.personas}\n*Tipo de Cabaña:* ${data.tipoCabana}\n*Mensaje Adicional:* ${data.mensaje}`.trim();
 
                 try {
                     const doc = new jsPDF();
@@ -476,4 +603,3 @@
     </script>
 </body>
 </html>
-
