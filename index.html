@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cabañas Manuara - Alojamiento en Isla de Pascua</title>
+    <!-- Favicon -->
+    <link rel="icon" href="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/main/logo.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +18,7 @@
         .btn { transition: all 0.3s ease; }
         .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
         html { scroll-behavior: smooth; }
-        #notification { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); padding: 1rem 2rem; border-radius: 0.5rem; color: white; z-index: 100; transition: opacity 0.5s, visibility 0.5s; opacity: 0; visibility: hidden; }
+        #notification { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); padding: 1rem 2rem; border-radius: 0.5rem; color: white; z-index: 1000; transition: opacity 0.5s, visibility 0.5s; opacity: 0; visibility: hidden; }
         #notification.show { opacity: 1; visibility: visible; }
         
         /* Carousel Styles */
@@ -30,6 +32,9 @@
         .carousel-dots { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; }
         .carousel-dot { width: 10px; height: 10px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.6); cursor: pointer; transition: background-color 0.3s; border: 1px solid rgba(0,0,0,0.2); }
         .carousel-dot.active { background-color: white; }
+
+        /* Lightbox Styles */
+        #lightbox { transition: opacity 0.3s ease; }
     </style>
 </head>
 <body class="antialiased">
@@ -37,7 +42,10 @@
     <!-- Header -->
     <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-gray-800">Cabañas Manuara</a>
+            <a href="#" class="flex items-center space-x-3">
+                <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/main/logo.png" alt="Logo Cabañas Manuara" class="h-10 w-10 object-contain">
+                <span class="text-2xl font-bold text-gray-800">Cabañas Manuara</span>
+            </a>
             <div class="hidden md:flex space-x-6">
                 <a href="#cabanas" class="text-gray-600 hover:text-gray-800">Cabañas</a>
                 <a href="#servicios" class="text-gray-600 hover:text-gray-800">Servicios</a>
@@ -49,7 +57,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative h-[60vh] min-h-[400px] bg-cover bg-center text-white" style="background-image: url('https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/refs/heads/main/IMG-20230803-WA0002.jpg');">
+    <section class="relative h-[60vh] min-h-[400px] bg-cover bg-center text-white" style="background-image: url('https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/main/IMG-20230803-WA0002.jpg');">
         <div class="absolute inset-0 bg-black/30"></div>
         <div class="relative container mx-auto px-6 h-full flex flex-col justify-center items-center text-center">
             <h1 class="text-4xl md:text-6xl font-bold mb-4">Tu hogar en el ombligo del mundo</h1>
@@ -304,7 +312,6 @@
                 let currentIndex = 0;
                 let autoPlayInterval;
 
-                // Create controls
                 const prevButton = document.createElement('button');
                 prevButton.innerHTML = '&#10094;';
                 prevButton.classList.add('carousel-button', 'prev');
@@ -420,7 +427,7 @@
              appId: "1:864729742711:web:2f4041a703ae21e70bf572"
         };
         
-        const appId = 'cabanas-manuara';
+        const appId = 'cabañas-manuara';
         let db, auth;
 
         function showNotification(message, isSuccess = true) {
@@ -462,7 +469,9 @@
             renderStars(0, true, 'testimonio-estrellas');
 
             starsContainer.addEventListener('click', e => {
-                const starInput = e.target.closest('label').querySelector('input[name="rating"]');
+                const label = e.target.closest('label');
+                if (!label) return;
+                const starInput = label.querySelector('input[name="rating"]');
                 if (starInput) {
                     const rating = starInput.value;
                     const allStars = starsContainer.querySelectorAll('.star-icon');
@@ -530,6 +539,7 @@
                 }
             }, (error) => {
                 console.error("Error loading testimonials: ", error);
+                showNotification("Error al cargar los testimonios.", false);
             });
         }
         
@@ -576,6 +586,15 @@
                     mensaje: formData.get('mensaje') || 'Ninguno'
                 };
 
+                try {
+                    const cotizacionesCollection = collection(db, `artifacts/${appId}/public/data/cotizaciones`);
+                    await addDoc(cotizacionesCollection, data);
+                    showNotification("Tu solicitud de cotización ha sido recibida.", true);
+                } catch (error) {
+                    console.error("Error saving quote:", error);
+                    showNotification("No se pudo guardar la cotización. Inténtalo de nuevo.", false);
+                }
+
                 const cotizacionText = `*¡Nueva Solicitud de Cotización!*\n\n*Nombre:* ${data.nombre}\n*Email:* ${data.email}\n*Fecha de Llegada:* ${data.llegada}\n*Fecha de Salida:* ${data.salida}\n*Número de Personas:* ${data.personas}\n*Tipo de Cabaña:* ${data.tipoCabana}\n*Mensaje Adicional:* ${data.mensaje}`.trim();
 
                 try {
@@ -586,10 +605,8 @@
                     const splitText = doc.splitTextToSize(cotizacionText.replace(/\*/g, ''), 180);
                     doc.text(splitText, 10, 20);
                     doc.save(`cotizacion-cabanas-manuara.pdf`);
-                    showNotification("PDF de tu cotización descargado.", true);
                 } catch (error) {
                     console.error("Error generating PDF:", error);
-                    showNotification("No se pudo generar el PDF.", false);
                 }
 
                 const whatsappNumber = "56984562244";
