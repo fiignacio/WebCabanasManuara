@@ -12,11 +12,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #FDFBF8; color: #3D405B; }
+        :root {
+            --primary-color: #D97706; /* Un tono terracota cálido */
+            --secondary-color: #3B82F6; /* Un azul océano */
+            --background-color: #FDFBF8;
+            --text-dark: #3D405B;
+            --text-light: #4B5563;
+        }
+
+        body { font-family: 'Inter', sans-serif; background-color: var(--background-color); color: var(--text-dark); }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
-        .card-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); }
+        
+        .card-shadow { box-shadow: 0 4px 15px -1px rgba(0, 0, 0, 0.06), 0 2px 8px -1px rgba(0, 0, 0, 0.04); transition: all 0.3s ease-in-out; }
+        .card-shadow:hover { transform: translateY(-5px); box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1), 0 4px 10px -2px rgba(0, 0, 0, 0.06); }
+
         .btn { transition: all 0.3s ease; }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+        .btn-primary { background-color: var(--primary-color); color: white; }
+        .btn-primary:hover { background-color: #B45309; }
+        
         html { scroll-behavior: smooth; }
         #notification { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); padding: 1rem 2rem; border-radius: 0.5rem; color: white; z-index: 1000; transition: opacity 0.5s, visibility 0.5s; opacity: 0; visibility: hidden; }
         #notification.show { opacity: 1; visibility: visible; }
@@ -35,6 +48,17 @@
 
         /* Lightbox Styles */
         #lightbox { transition: opacity 0.3s ease; }
+
+        /* Animation Styles */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -46,19 +70,19 @@
                 <img src="https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/main/logo.png" alt="Logo Cabañas Manuara" class="h-10 w-10 object-contain">
                 <span class="text-2xl font-bold text-gray-800">Cabañas Manuara</span>
             </a>
-            <div class="hidden md:flex space-x-6">
-                <a href="#cabanas" class="text-gray-600 hover:text-gray-800">Cabañas</a>
-                <a href="#servicios" class="text-gray-600 hover:text-gray-800">Servicios</a>
-                <a href="#ubicacion" class="text-gray-600 hover:text-gray-800">Ubicación</a>
-                <a href="#testimonios" class="text-gray-600 hover:text-gray-800">Testimonios</a>
-                <a href="#cotizar" class="text-gray-600 hover:text-gray-800">Cotizar</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#cabanas" class="text-gray-600 hover:text-[var(--primary-color)] transition-colors">Cabañas</a>
+                <a href="#servicios" class="text-gray-600 hover:text-[var(--primary-color)] transition-colors">Servicios</a>
+                <a href="#ubicacion" class="text-gray-600 hover:text-[var(--primary-color)] transition-colors">Ubicación</a>
+                <a href="#testimonios" class="text-gray-600 hover:text-[var(--primary-color)] transition-colors">Testimonios</a>
+                <a href="#cotizar" class="text-gray-600 hover:text-[var(--primary-color)] transition-colors">Cotizar</a>
             </div>
         </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="relative h-[60vh] min-h-[400px] bg-cover bg-center text-white" style="background-image: url('https://raw.githubusercontent.com/fiignacio/WebCabanasManuara/main/IMG-20230803-WA0002.jpg');">
-        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
         <div class="relative container mx-auto px-6 h-full flex flex-col justify-center items-center text-center">
             <h1 class="text-4xl md:text-6xl font-bold mb-4">Tu hogar en el ombligo del mundo</h1>
             <p class="text-lg md:text-xl max-w-3xl">Descubre la magia de Rapa Nui desde la comodidad de nuestras cabañas privadas.</p>
@@ -67,7 +91,7 @@
 
     <main class="container mx-auto px-6 py-16">
         <!-- Cabañas Section -->
-        <section id="cabanas" class="mb-20 scroll-mt-20">
+        <section id="cabanas" class="mb-20 scroll-mt-20 fade-in-section">
             <h2 class="text-4xl font-bold text-center mb-12">Nuestras Cabañas</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
@@ -131,11 +155,11 @@
         </section>
 
         <!-- Servicios Section -->
-        <section id="servicios" class="mb-20 scroll-mt-20">
+        <section id="servicios" class="mb-20 scroll-mt-20 fade-in-section">
             <h2 class="text-4xl font-bold text-center mb-12">Servicios</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
                 <div class="bg-white p-8 rounded-lg card-shadow">
-                    <h3 class="text-2xl font-bold mb-6 text-center">Incluidos en tu Estadía</h3>
+                    <h3 class="text-2xl font-bold mb-6 text-center text-[var(--primary-color)]">Incluidos en tu Estadía</h3>
                     <ul class="space-y-4 text-gray-700">
                         <li class="flex items-start">
                             <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -152,14 +176,14 @@
                     </ul>
                 </div>
                 <div class="bg-white p-8 rounded-lg card-shadow">
-                    <h3 class="text-2xl font-bold mb-6 text-center">Adicionales</h3>
+                    <h3 class="text-2xl font-bold mb-6 text-center text-[var(--secondary-color)]">Adicionales</h3>
                     <ul class="space-y-4 text-gray-700">
                         <li class="flex items-start">
-                            <svg class="w-6 h-6 text-blue-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <svg class="w-6 h-6 text-[var(--secondary-color)] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                             <span>Tours privados con guía local Rapa Nui por los lugares más emblemáticos.</span>
                         </li>
                         <li class="flex items-start">
-                            <svg class="w-6 h-6 text-blue-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                            <svg class="w-6 h-6 text-[var(--secondary-color)] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
                             <span>Arriendo de vehículos (Jeeps, scooters, bicicletas) para explorar la isla a tu ritmo.</span>
                         </li>
                     </ul>
@@ -167,21 +191,18 @@
             </div>
         </section>
 
-        <section id="ubicacion" class="mb-20 scroll-mt-20 text-center">
+        <section id="ubicacion" class="mb-20 scroll-mt-20 fade-in-section">
             <h2 class="text-4xl font-bold text-center mb-12">Nuestra Ubicación</h2>
             <div class="w-full h-96 rounded-lg overflow-hidden card-shadow">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3613.011882958319!2d-109.4281448246395!3d-27.15570297656114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9947fbe254129577%3A0xe04a37e1c89f5c43!2sCaba%C3%B1as%20Anakena!5e1!3m2!1ses!2scl!4v1720812350711!5m2!1ses!2scl"
-                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2510.2742621142315!2d-109.43173944650727!3d-27.154279429377368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9947fbb9f5cbf71f%3A0x348c66a152db5827!2sCaba%C3%B1as%20Manuara!5e0!3m2!1ses!2scl!4v1752448394360!5m2!1ses!2scl" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-            <a href="https://maps.app.goo.gl/hKPdc8w2jTfL3Rkh9" target="_blank" rel="noopener noreferrer" class="btn inline-flex items-center mt-6 py-2 px-6 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+            <a href="https://maps.app.goo.gl/hKPdc8w2jTfL3Rkh9" target="_blank" rel="noopener noreferrer" class="btn btn-primary inline-flex items-center mt-6 py-2 px-6 rounded-md">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13V7m0 13h6m-6 0l6-3m-6 3V7m6 10v-4a2 2 0 00-2-2h-2a2 2 0 00-2 2v4m6 0l6-3m-6 3h6m6-3l-5.447 2.724A1 1 0 0115 16.382V5.618a1 1 0 011.447-.894L21 7"></path></svg>
                 Abrir en Google Maps
             </a>
         </section>
 
-        <section id="testimonios" class="mb-20 scroll-mt-20">
+        <section id="testimonios" class="mb-20 scroll-mt-20 fade-in-section">
             <h2 class="text-4xl font-bold text-center mb-12">Lo que dicen nuestros huéspedes</h2>
             
             <div class="bg-white p-8 rounded-lg card-shadow max-w-2xl mx-auto mb-12">
@@ -207,7 +228,7 @@
                         <textarea id="testimonio-mensaje" rows="4" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2"></textarea>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn inline-flex justify-center py-3 px-8 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700">
+                        <button type="submit" class="btn btn-primary inline-flex justify-center py-3 px-8 border border-transparent shadow-sm text-sm font-medium rounded-md">
                             Enviar Testimonio
                         </button>
                     </div>
@@ -219,7 +240,7 @@
             </div>
         </section>
 
-        <section id="cotizar" class="bg-white p-8 md:p-12 rounded-lg card-shadow max-w-4xl mx-auto scroll-mt-20">
+        <section id="cotizar" class="bg-white p-8 md:p-12 rounded-lg card-shadow max-w-4xl mx-auto scroll-mt-20 fade-in-section">
             <h2 class="text-4xl font-bold text-center mb-8">Solicita tu Cotización</h2>
             <form id="cotizacion-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -256,7 +277,7 @@
                     <textarea id="mensaje" name="mensaje" rows="4" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2" placeholder="Cuéntanos más sobre tu viaje o si tienes alguna pregunta."></textarea>
                 </div>
                 <div class="md:col-span-2 text-center">
-                    <button type="submit" class="btn inline-flex justify-center items-center py-3 px-8 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-600">
+                    <button type="submit" class="btn bg-green-500 hover:bg-green-600 text-white inline-flex justify-center items-center py-3 px-8 border border-transparent shadow-sm text-sm font-medium rounded-md">
                         <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99 0-3.903-.52-5.687-1.475L.057 24zM6.51 19.318l.444.262c1.615.962 3.427 1.466 5.278 1.466 5.445 0 9.888-4.444 9.889-9.889.001-5.445-4.443-9.888-9.889-9.888-5.444 0-9.888 4.444-9.888 9.888 0 1.931.558 3.817 1.626 5.482l.272.435-1.026 3.753 3.803-1.002z"/></svg>
                         Enviar por WhatsApp
                     </button>
@@ -415,6 +436,20 @@
             });
         }
         
+        // --- Scroll Animation Logic ---
+        function setupScrollAnimations() {
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => observer.observe(section));
+        }
+
         // =================================================================================
         // Firebase Configuration
         // =================================================================================
@@ -553,6 +588,7 @@
         document.addEventListener('DOMContentLoaded', async () => {
             setupCarousels();
             setupLightbox();
+            setupScrollAnimations();
 
             if (!firebaseConfig.apiKey) {
                 console.warn("Firebase config is missing. Testimonial feature will be disabled.");
@@ -567,12 +603,12 @@
                     console.log("Firebase authentication successful.");
                     setupTestimonialForm();
                     loadTestimonials();
+                    setupQuoteForm(); // Moved inside to ensure 'db' is available
                 } catch (error) {
                     console.error("Firebase initialization failed:", error);
-                    showNotification("No se pudo conectar a la base de datos de testimonios.", false);
+                    showNotification("No se pudo conectar a la base de datos.", false);
                 }
             }
-            setupQuoteForm();
         });
         
         // --- Quote Form Logic ---
